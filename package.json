@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --fix",
-    "test": "jest ./ --forceExit --detectOpenHandles",
+    "test": "SET NODE_ENV = test && jest ./routes --forceExit --detectOpenHandles",
     "coverage": "jest --collectCoverageFrom=routes/**.js --coverage routes --forceExit --detectOpenHandles"
   },
   "author": "",
