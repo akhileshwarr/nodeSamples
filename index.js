@@ -1,18 +1,17 @@
 /* eslint-disable no-console */
 // const fs = require('fs');
 const express = require('express');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const routes = require('./routes');
 
 const app = express();
-const bodyParser = require('body-parser');
-
-const multer = require('multer');
 
 const upload = multer({
   dest: 'multer/', // this saves your file into a directory called "uploads"
 });
 const hostname = '127.0.0.1';
 const port = 3001;
-const routes = require('./routes');
 
 app.use(bodyParser.urlencoded({
   extended: true,

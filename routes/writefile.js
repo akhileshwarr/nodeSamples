@@ -1,15 +1,18 @@
-const path = require('path'),
- fs = require('fs');
- const appDir = path.dirname(require.main.filename);
+const path = require('path');
 
-module.exports = (req,res)=>{
+
+const fs = require('fs');
+
+const appDir = path.dirname(require.main.filename);
+
+module.exports = (req, res) => {
   console.log(path.dirname(req.file.path));
-fs.readFile(req.file.path,(err,data)=>{
-  fs.writeFile(appDir+'/downloads/'+req.file.originalname,data,(err,data)=>{
-    mime = req.headers.accepts || 'text/html'
-    res.writeHead(200, {'Content-Type': mime});
-    res.write("copied!");
-    res.end();
-  })
-})
-}
+  fs.readFile(req.file.path, (err, data) => {
+    fs.writeFile(`${appDir}/downloads/${req.file.originalname}`, data, () => {
+      const mime = req.headers.accepts || 'text/html';
+      res.writeHead(200, { 'Content-Type': mime });
+      res.write('copied!');
+      res.end();
+    });
+  });
+};
